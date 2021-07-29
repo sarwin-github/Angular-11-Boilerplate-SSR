@@ -1,0 +1,43 @@
+<div class="container-fluid py-5" 
+[@animate]="{value:'*', params:{ scale:'.9', delay:'400ms' }}">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-2 bg-light py-5">
+	
+				<!-- Error Message -->
+				<form class="px-3" (submit)="loginTeacher($event)" [formGroup]="teacherLoginForm">
+					<div class="alert alert-danger alert-dismissible fade show error-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="error" role="alert">
+					  	<a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="onAlertClose()">&times;</a>
+					  	<span [innerHtml]="error"></span>
+					</div>  
+
+					<div class="alert alert-success alert-dismissible fade show success-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="message" role="alert">
+					  	<a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="onAlertClose()">&times;</a>
+					  	<span [innerHtml]="message"></span>
+					</div>  
+
+					<div class="form-group">
+						<h4 class="text-muted m-0">Log in to your Teacher Account</h4>
+						<p class="text-justify text-muted mt-2">
+							Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. 
+						</p>
+
+						<input type="email" class="form-control" formControlName="email" name="email" placeholder="Enter email">
+					</div>
+
+					<div class="form-group mt-3">
+						<input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+					</div>
+
+					<div class="text-center mt-3">
+						<a [routerLink]="'/teacher/signup'" class="mat-primary text-center full-width">Are you a new teacher? Sign Up Here</a><br>
+					</div>
+
+					<button type="submit" class="btn btn-primary float-right mt-3">Submit</button>
+				</form> 
+			</div>
+		</div>
+	</div>
+</div>
+
+

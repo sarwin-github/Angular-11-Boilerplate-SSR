@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <div class="container">
+    <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-target="#navCollapseContent" aria-controls="navCollapseContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+      <img
+        width="40"
+        alt="Angular Logo"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+      />
+      Welcome Angular</a>
+
+    <div class="navbar-collapse collapse text-white"  id="navCollapseContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+
+        <li class="nav-item nav-item-divider">
+          <span class="nav-link nav-item-divider mx-1"></span>
+        </li>
+
+        <li class="nav-item" *ngIf="!loggedInStudent && !loggedInClient">
+          <a class="nav-link" routerLink="/student/signin">Student Sign in</a>
+        </li>
+
+        <li class="nav-item dropdown" *ngIf="loggedInStudent">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" 
+          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profile <span class="fa fa-chevron-down"></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item myDropdownLink" routerLink="/student/profile">Profile</a>
+            <a class="dropdown-item myDropdownLink" (click)="studentLogout()">Logout</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item nav-item-divider" *ngIf="!loggedInStudent">
+          <span class="nav-link nav-item-divider mx-1">|</span>
+        </li>
+
+        <li class="nav-item nav-item-no-hover" 
+        *ngIf="!loggedInStudent && !loggedInClient">
+          <a class="nav-link" routerLink="/teacher/signin">Teacher Sign in</a>
+        </li>
+
+        <li class="nav-item dropdown" *ngIf="loggedInClient">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profile <span class="fa fa-chevron-down"></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item myDropdownLink" routerLink="/teacher/profile">Profile</a>
+            <a class="dropdown-item myDropdownLink" (click)="teacherLogout()">Logout</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

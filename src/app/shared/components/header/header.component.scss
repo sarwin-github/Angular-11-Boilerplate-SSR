@@ -1,0 +1,21 @@
+.myDropdownLink{
+  color: gray !important;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.nav-item-divider{
+  &:hover{
+    border: none !important;
+  }
+}
+
+.nav-link{
+  color: whitesmoke !important;
+
+  &:hover{
+    color: gray !important;
+  }
+}
