@@ -36,7 +36,7 @@ export class TeacherService {
     // Get teacher login form
   getTeacherLoginForm(): Observable<any>{
     return this.http
-    .get(`${this.server}/api/client/signin`)
+    .get(`${this.server}/api/teacher/signin`)
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -46,7 +46,7 @@ export class TeacherService {
   // post login teacher
   postLogin(body: any): Observable<any>{
     return this.http
-    .post(`${this.server}/api/client/signin`, body, { /*withCredentials : true*/ })
+    .post(`${this.server}/api/teacher/signin`, body, { /*withCredentials : true*/ })
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -56,7 +56,7 @@ export class TeacherService {
   // get signup form
   getTeacherSignupForm(): Observable<any>{
     return this.http
-    .get(`${this.server}/api/client/signup`)
+    .get(`${this.server}/api/teacher/signup`)
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -66,7 +66,7 @@ export class TeacherService {
   // post signup teacher
   postSignUp(body: any): Observable<any>{
     return this.http
-    .post(`${this.server}/api/client/signup`, body)
+    .post(`${this.server}/api/teacher/signup`, body)
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -76,7 +76,7 @@ export class TeacherService {
   // get login status from session storage
   getTeacherProfile(): any {
     return this.http
-    .get(`${this.server}/api/client/profile`)
+    .get(`${this.server}/api/teacher/profile`)
     .pipe(
       map(res => res),
       catchError(this.handleErrorAuthorize)
@@ -87,9 +87,9 @@ export class TeacherService {
   getRefreshToken(): any {
     if(localStorage.getItem('refreshToken')){
       return this.http
-      .post(`${this.server}/api/client/token/refresh`, 
+      .post(`${this.server}/api/teacher/token/refresh`, 
         ({ 
-          client: localStorage.getItem('teacher'),
+          teacher: localStorage.getItem('teacher'),
           refreshToken: localStorage.getItem('refreshToken') 
         })
       )
@@ -112,7 +112,7 @@ export class TeacherService {
   // logout teacher
   logoutTeacher(): Observable<any>{
     return this.http
-    .get(`${this.server}/api/client/logout`)
+    .get(`${this.server}/api/teacher/logout`)
     .pipe(
       map(res => {
         localStorage.clear();

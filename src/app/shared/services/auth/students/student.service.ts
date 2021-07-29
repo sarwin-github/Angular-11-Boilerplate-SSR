@@ -34,7 +34,7 @@ export class StudentService {
   // Get student login form
   getStudentLoginForm(): Observable<any>{
     return this.http
-    .get(`${this.server}/api/user/signin`)
+    .get(`${this.server}/api/student/signin`)
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -44,7 +44,7 @@ export class StudentService {
   // post login student
   postLogin(body: any): Observable<any>{
     return this.http
-    .post(`${this.server}/api/user/signin`, body, { /*withCredentials : true*/ })
+    .post(`${this.server}/api/student/signin`, body, { /*withCredentials : true*/ })
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -54,7 +54,7 @@ export class StudentService {
   // get signup form
   getStudentSignupForm(): Observable<any>{
     return this.http
-    .get(`${this.server}/api/user/signup`)
+    .get(`${this.server}/api/student/signup`)
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -64,7 +64,7 @@ export class StudentService {
   // post signup student
   postSignUp(body: any): Observable<any>{
     return this.http
-    .post(`${this.server}/api/user/signup`, body)
+    .post(`${this.server}/api/student/signup`, body)
     .pipe(
       map(res => res),
       catchError(this.handleError)
@@ -74,7 +74,7 @@ export class StudentService {
   // get login status from session storage
   getStudentProfile(): any {
     return this.http
-    .get(`${this.server}/api/user/profile`)
+    .get(`${this.server}/api/student/profile`)
     .pipe(
       map(res => res),
       catchError(this.handleErrorAuthorize)
@@ -85,9 +85,9 @@ export class StudentService {
   getRefreshToken(): any {
     if(localStorage.getItem('refreshToken')){
       return this.http
-      .post(`${this.server}/api/user/token/refresh`, 
+      .post(`${this.server}/api/student/token/refresh`, 
         ({ 
-          user: localStorage.getItem('student'),
+          student: localStorage.getItem('student'),
           refreshToken: localStorage.getItem('refreshToken') 
         })
         )
@@ -110,7 +110,7 @@ export class StudentService {
   // logout student
   logoutStudent(): Observable<any>{
     return this.http
-    .get(`${this.server}/api/user/logout`)
+    .get(`${this.server}/api/student/logout`)
     .pipe(
       map(res => {
         localStorage.clear();

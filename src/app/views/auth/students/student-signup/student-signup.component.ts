@@ -106,9 +106,9 @@ export class StudentSignupComponent implements OnInit {
         localStorage.setItem('token', 'Bearer ' + student.token);
         localStorage.setItem('refreshToken', result.refreshToken);
         localStorage.setItem('student', JSON.stringify({
-          _id: result.user._id,
-          name: result.user.name,
-          email: result.user.email
+          _id: result.student._id,
+          name: result.student.name,
+          email: result.student.email
       }));
 
         this.studentSignupForm.reset();

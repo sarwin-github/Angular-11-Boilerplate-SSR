@@ -29,6 +29,8 @@ export class StudentProfileComponent implements OnInit {
     this.req = this.studentService.getStudentProfile()
     .subscribe((result) => {
       this.student_data = result;
+
+      console.log(result)
     },
     // If error in server/api temporary navigate to error page
     (err) => {
