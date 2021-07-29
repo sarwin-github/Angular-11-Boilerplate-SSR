@@ -56,7 +56,7 @@ export class TeacherSigninComponent implements OnInit {
 
     // execute http post request
     this.postReq = this.teacherService
-    .postLogin(JSON.stringify(body))
+    .postLogin(body)
     .subscribe((result) => {
       // if error then throw error result 
       if(result.error){
@@ -72,16 +72,18 @@ export class TeacherSigninComponent implements OnInit {
 
       // if no error, execute login validation
       else {
+        let data = result;
+
         localStorage.removeItem('loginError');
         localStorage.setItem('loginMessage', 'Login was successful.');
-        localStorage.setItem('token', 'Bearer ' + result.token);
-        localStorage.setItem('token_authorization', /*'Bearer ' + */result.token.replace('Bearer ', ''));
+        localStorage.setItem('token', 'Bearer ' + data.token);
+        localStorage.setItem('token_authorization', data.token.replace('Bearer ', ''));
 
         localStorage.setItem('refreshToken', result.refreshToken);
         localStorage.setItem('teacher', JSON.stringify({
-          _id: result.teacher._id,
-          name: result.teacher.name,
-          email: result.teacher.email
+          _id: result.client._id,
+          name: result.client.name,
+          email: result.client.email
         }));
 
         this.teacherLoginForm.reset();

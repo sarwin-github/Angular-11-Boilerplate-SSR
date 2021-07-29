@@ -66,7 +66,6 @@ export class StudentSigninComponent implements OnInit {
         localStorage.setItem('loginError', result.error);
 
         this.error = localStorage.getItem('loginError');
-        //this.error = this.error.split(',').join('<br>');
         return this.router.navigate(['/student/signin']);
       } 
 

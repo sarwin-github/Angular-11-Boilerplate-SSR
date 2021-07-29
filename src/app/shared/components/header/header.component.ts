@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StudentService } from '../../services/auth/students/student.service';
+import { TeacherService } from '../../services/auth/teachers/teacher.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,16 +17,17 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router:Router, 
     private activatedRoute: ActivatedRoute,
-    private studentService: StudentService) { 
+    private studentService: StudentService,
+    private teacherService: TeacherService) { 
 
     this.router.events.subscribe(event => {
       this.studentService.studentStatus$.subscribe(result => {
         this.loggedInStudent = result;
       });
 
-      /*this.clientService.clientStatus$.subscribe(result => {
+      this.teacherService.teacherStatus$.subscribe(result => {
         this.loggedInClient = result;
-      });*/
+      });
     });
   }
 
@@ -40,13 +42,13 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  /*clientLogout(){
-    this.req = this.clientService
-    .logoutClient()
+  teacherLogout(){
+    this.req = this.teacherService
+    .logoutTeacher()
     .subscribe((data) => {
       window.scrollTo(0, 0);
     });
-  }*/
+  }
 
   ngOnDestroy(){
     if(this.req) this.req.unsubscribe();

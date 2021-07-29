@@ -1,1 +1,47 @@
-<p>teacher-profile works!</p>
+<div class="container py-5" [@animate]="{value:'*', params:{ scale:'.9', delay:'400ms' }}">
+	<div class="row">
+		<div class="col-md-4 pt-5 pb-3 text-center px-5">
+			<h3 class="text-muted">Teacher Profile</h3>
+			<img src="/assets/images/image-placeholder.png" alt="" class="img-fluid my-4">
+		</div>
+		<div class="col-md-8 py-5 px-3 text-center">
+			<h5 class="text-muted m-0">Welcome to your profile {{teacher_data.client?.name}}</h5>
+
+			<div class="px-md-4 px-1 pt-4">
+				<div class="text-justify text-muted px-3">
+					<p>Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. </p>
+				</div>
+				<hr>
+				<h5 class="text-left text-muted pl-md-5">Details</h5>
+				<div class="media pl-md-5">
+					<img class="mr-3" src="/assets/images/face-2.jpg" alt="">
+					<div class="media-body mt-3">
+						<dl class="text-left">
+							<dd>
+								Name: {{teacher_data.client?.name}}
+							</dd>
+
+							<dd>
+								Company: {{teacher_data.client?.company}}
+							</dd>
+
+							<dd>
+								Email: {{teacher_data.client?.email}}
+							</dd>
+							<dd>
+								Phone: {{teacher_data.client?.phone}}
+							</dd>
+							<dd>
+								Address: {{teacher_data.client?.address}}
+							</dd>
+						</dl>
+
+					</div>
+				</div>
+				<hr>
+			</div>
+
+		</div>
+	</div>
+</div>
+
