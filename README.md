@@ -1,6 +1,10 @@
-# AngularSsrUniversal
+# Angular Ssr Universal
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
+
+## About this App
+
+This is a boiler plate of Angular 11 with 2 user authentication deployed in heroku
 
 ## Development server
 
