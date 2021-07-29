@@ -6,7 +6,7 @@ import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-teacher-signin',
+  selector: 'teacher-signin',
   animations: [mainAnimations],
   templateUrl: './teacher-signin.component.html',
   styleUrls: ['./teacher-signin.component.scss']

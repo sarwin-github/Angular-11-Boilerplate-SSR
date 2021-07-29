@@ -1,1 +1,62 @@
-<p>teacher-signup works!</p>
+<div class="container py-5" [@animate]="{value:'*', params:{ scale:'.9', delay:'400ms' }}">
+	<div class="row">
+		<div class="offset-2 col-md-8 py-4 bg-light">
+			<form class="px-3" (submit)="signUpTeacher($event)" [formGroup]="teacherSignupForm">
+				<!-- Error Message -->
+				<div class="alert alert-danger alert-dismissible fade show error-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="error" role="alert">
+				  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="onAlertClose()"></button>
+				  	<span [innerHtml]="error"></span>
+				</div>  
+
+				<div class="alert alert-success alert-dismissible fade show success-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="message" role="alert">
+				  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="onAlertClose()"></button>
+				  	<span [innerHtml]="message"></span>
+				</div>  
+
+				<div class="form-group mt-3">
+					<h4 class="text-muted m-0">Create a new Teacher Account</h4>
+					<p class="text-justify text-muted mt-2">
+						Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. 
+					</p>
+					<input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+				</div>
+				<div class="form-group mt-3">
+					<input type="password" class="form-control" formControlName="password" placeholder="Password">
+				</div>
+
+				<div class="form-group mt-3">
+					<input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+				</div>
+
+				<h4 class="text-muted mt-4">Personal Information</h4>
+
+				<div class="form-group mt-3">
+					<input type="text" class="form-control" placeholder="Name" formControlName="name">
+					<small id="emailHelp" class="form-text text-muted">Full Name</small>
+				</div>
+
+				<div class="form-group mt-3">
+					<input type="text" class="form-control" placeholder="Company" formControlName="company">
+					<small id="emailHelp" class="form-text text-muted">Company Name</small>
+				</div>
+
+				<div class="form-group mt-3">
+					<input type="text" class="form-control" placeholder="Address" formControlName="address">
+					<small id="emailHelp" class="form-text text-muted">Block No. City, State, Country</small>
+				</div>
+
+				<div class="form-group mt-3">
+					<input type="text" class="form-control" placeholder="Phone" formControlName="phone">
+				</div>
+
+				<div class="text-center mt-3">
+					<a [routerLink]="'/teacher/signin'" class="mat-primary text-center full-width">Do you have an account already? Sign in now.</a><br>
+				</div>
+
+				<button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+

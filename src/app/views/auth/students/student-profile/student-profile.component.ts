@@ -6,7 +6,7 @@ import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-student-profile',
+  selector: 'student-profile',
   animations: [mainAnimations],
   templateUrl: './student-profile.component.html',
   styleUrls: ['./student-profile.component.scss']
