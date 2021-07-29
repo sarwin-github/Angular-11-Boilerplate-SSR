@@ -81,9 +81,9 @@ export class TeacherSigninComponent implements OnInit {
 
         localStorage.setItem('refreshToken', result.refreshToken);
         localStorage.setItem('teacher', JSON.stringify({
-          _id: result.client._id,
-          name: result.client.name,
-          email: result.client.email
+          _id: result.teacher._id,
+          name: result.teacher.name,
+          email: result.teacher.email
         }));
 
         this.teacherLoginForm.reset();
