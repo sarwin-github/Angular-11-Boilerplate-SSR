@@ -2,8 +2,7 @@
 [@animate]="{value:'*', params:{ scale:'.9', delay:'400ms' }}">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 offset-2 bg-light py-5">
-	
+			<div class="col-12 col-md-8 offset-md-2 bg-light py-5">
 				<!-- Error Message -->
 				<form class="px-3" (submit)="loginStudent($event)" [formGroup]="studentLoginForm">
 					<div class="alert alert-danger alert-dismissible fade show error-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="error" role="alert">
