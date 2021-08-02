@@ -4,43 +4,49 @@
 			<h3 class="text-muted">Teacher Profile</h3>
 			<img src="/assets/images/image-placeholder.png" alt="" class="img-fluid my-4">
 		</div>
-		<div class="col-md-8 py-5 px-3 text-center">
-			<h5 class="text-muted m-0">Welcome to your profile {{teacher_data.teacher?.name}}</h5>
+		<div class="col-md-8 py-5 px-3 ">
+			<!-- PROFILE SECTION -->
+			<section class="text-md-center" *ngIf="!loading">
+				<h5 class="text-muted m-0">Welcome to your profile {{teacher_data.teacher?.name}}</h5>
 
-			<div class="px-md-4 px-1 pt-4">
-				<div class="text-justify text-muted px-3">
-					<p>Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. </p>
-				</div>
-				<hr>
-				<h5 class="text-left text-muted pl-md-5">Details</h5>
-				<div class="media pl-md-5">
-					<img class="mr-3" src="/assets/images/face-2.jpg" alt="">
-					<div class="media-body mt-3">
-						<dl class="text-left">
-							<dd>
-								Name: {{teacher_data.teacher?.name}}
-							</dd>
-
-							<dd>
-								Company: {{teacher_data.teacher?.company}}
-							</dd>
-
-							<dd>
-								Email: {{teacher_data.teacher?.email}}
-							</dd>
-							<dd>
-								Phone: {{teacher_data.teacher?.phone}}
-							</dd>
-							<dd>
-								Address: {{teacher_data.teacher?.address}}
-							</dd>
-						</dl>
-
+				<div class="px-md-4 px-1 pt-4">
+					<div class="text-justify text-muted px-3">
+						<p>Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. </p>
 					</div>
-				</div>
-				<hr>
-			</div>
+					<hr>
+					<h5 class="text-left text-muted pl-md-5">Details</h5>
+					<div class="media pl-md-5">
+						<img class="mr-3" src="/assets/images/face-2.jpg" alt="">
+						<div class="media-body mt-3">
+							<dl class="text-left">
+								<dd>
+									Name: {{teacher_data.teacher?.name}}
+								</dd>
 
+								<dd>
+									Company: {{teacher_data.teacher?.company}}
+								</dd>
+
+								<dd>
+									Email: {{teacher_data.teacher?.email}}
+								</dd>
+								<dd>
+									Phone: {{teacher_data.teacher?.phone}}
+								</dd>
+								<dd>
+									Address: {{teacher_data.teacher?.address}}
+								</dd>
+							</dl>
+
+						</div>
+					</div>
+					<hr>
+				</div>
+			</section>
+
+			<!-- LOADER -->
+			<!-- PAGE CUSTOM LOADER -->
+			<custom-profile-loader [loading]="loading"></custom-profile-loader>
 		</div>
 	</div>
 </div>

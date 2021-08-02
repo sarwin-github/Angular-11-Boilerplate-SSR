@@ -9,12 +9,14 @@ import { StudentsRoutes } from './students.routing';
 import { StudentSigninComponent } from './student-signin/student-signin.component';
 import { StudentSignupComponent } from './student-signup/student-signup.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(StudentsRoutes)
   ],
   declarations: [

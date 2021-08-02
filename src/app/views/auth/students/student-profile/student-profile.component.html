@@ -4,37 +4,44 @@
 			<h3 class="text-muted">Student Profile</h3>
 			<img src="/assets/images/image-placeholder.png" alt="" class="img-fluid my-4">
 		</div>
-		<div class="col-md-8 py-5 px-3 text-center">
-			<h5 class="text-muted m-0">Welcome to your profile {{student_data.student?.name}}</h5>
+		<div class="col-md-8 py-5 px-3">
+			<!-- Profile Info -->
+			<section class="text-md-center" *ngIf="!loading">
+				<h5 class="text-muted m-0">Welcome to your profile {{student_data.student?.name}}</h5>
 
-			<div class="px-md-4 px-1 pt-4">
-				<div class="text-justify text-muted px-3">
-					<p>Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. </p>
-				</div>
-				<hr>
-				<h5 class="text-center text-muted pl-md-5">Details</h5>
-				<div class="media pl-md-5">
-					<img class="me-3" src="/assets/images/face-1.jpg" alt="">
-					<div class="media-body mt-3">
-						<dl class="text-center">
-							<dd>
-								Name: {{student_data.student?.name}}
-							</dd>
-							<dd>
-								Email: {{student_data.student?.email}}
-							</dd>
-							<dd>
-								Phone: {{student_data.student?.phone}}
-							</dd>
-							<dd>
-								Address: {{student_data.student?.address}}
-							</dd>
-						</dl>
-
+				<div class="px-md-4 px-1 pt-4">
+					<div class="text-justify text-muted px-3">
+						<p>Lorem ipsum dolor sit amet, veri modus conceptam mel cu, has in dictas discere qualisque, saperet ullamcorper ad eum. </p>
 					</div>
+					<hr>
+					<h5 class="text-md-center text-muted pl-md-5">Details</h5>
+					<div class="media pl-md-5">
+						<img class="me-3" src="/assets/images/face-1.jpg" alt="">
+						<div class="media-body mt-3">
+							<dl class="text-md-center">
+								<dd>
+									Name: {{student_data.student?.name}}
+								</dd>
+								<dd>
+									Email: {{student_data.student?.email}}
+								</dd>
+								<dd>
+									Phone: {{student_data.student?.phone}}
+								</dd>
+								<dd>
+									Address: {{student_data.student?.address}}
+								</dd>
+							</dl>
+
+						</div>
+					</div>
+					<hr>
 				</div>
-				<hr>
-			</div>
+			</section>
+
+			<!-- LOADER -->
+			<!-- PAGE CUSTOM LOADER -->
+			<custom-profile-loader [loading]="loading"></custom-profile-loader>
 
 		</div>
 	</div>

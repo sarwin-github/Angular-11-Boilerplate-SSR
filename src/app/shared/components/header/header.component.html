@@ -47,8 +47,8 @@
           <a class="nav-link" routerLink="/teacher/signin">Teacher Sign in</a>
         </li>
 
-        <li class="nav-item hvr-underline-from-center dropdown" *ngIf="loggedInClient">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item dropdown" *ngIf="loggedInClient">
+          <a class="nav-link hvr-underline-from-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Profile <span class="fa fa-chevron-down"></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -24,8 +24,6 @@ export class TeacherGuard implements CanActivate {
         return false;
       }
       else {
-        console.log("REFRESH TOKEN", result)
-        
         localStorage.setItem('refreshTokenMessage', 'Refresh Token was successful.');
         localStorage.setItem('token', 'Bearer ' + JSON.parse(JSON.stringify(result)).refreshToken);
         return true;

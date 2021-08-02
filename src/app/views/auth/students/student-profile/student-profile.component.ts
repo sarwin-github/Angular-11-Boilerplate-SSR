@@ -15,7 +15,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class StudentProfileComponent implements OnInit {
 
   private req : Subscription;
-  student_data: any = {};
+  public loading: boolean = true;
+  public student_data: any = {};
 
   constructor(private router:Router, 
     private activatedRoute: ActivatedRoute,
@@ -28,12 +29,10 @@ export class StudentProfileComponent implements OnInit {
   }
 
   getStudentProfile(){
-    // show spinner
-    this.spinner.show();
 
     this.req = this.studentService.getStudentProfile()
     .subscribe((result) => {
-      this.spinner.hide();
+      setTimeout(() => this.loading = false, 2000);
       this.student_data = result;
     },
     // If error in server/api temporary navigate to error page

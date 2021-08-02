@@ -14,8 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule.forChild(HomeRoutes)
   ],
   declarations: [
-  	HomeComponent,
-    HomeComponent
+  	HomeComponent
   ]
 })
 export class HomeModule{ }
