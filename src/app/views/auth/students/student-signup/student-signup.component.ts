@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../../../../shared/services/auth/students/student.service'
 import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'student-signup',
@@ -25,6 +26,7 @@ export class StudentSignupComponent implements OnInit {
     constructor(private router:Router, 
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private spinner: NgxSpinnerService,
     private studentService: StudentService) { 
       this.student = <IStudentInput>{};
     }
@@ -71,6 +73,9 @@ export class StudentSignupComponent implements OnInit {
         'phone'    : this.student.phone
       };
 
+    // Show Spinner
+    this.spinner.show();
+
     // execute http post request
     this.postReq = this.studentService.postSignUp(body)
     .subscribe((result) => {
@@ -80,7 +85,8 @@ export class StudentSignupComponent implements OnInit {
           localStorage.setItem('signupError', result.error);
 
           this.error = localStorage.getItem('signupError');
-            return this.router.navigate(['student/signup']);
+          this.spinner.hide();
+          return this.router.navigate(['student/signup']);
         } 
         // if no error, execute login validation
         else {
@@ -92,9 +98,9 @@ export class StudentSignupComponent implements OnInit {
       },
       // If error in server/api temporary navigate to error page
     (err) => {
+      this.spinner.hide();
       localStorage.setItem('sessionError', err);
       localStorage.setItem('sessionUrl', this.router.url);
-      console.log(err)
     });    
   }
 
@@ -109,12 +115,17 @@ export class StudentSignupComponent implements OnInit {
           _id: result.student._id,
           name: result.student.name,
           email: result.student.email
-      }));
+        }));
 
         this.studentSignupForm.reset();
         this.message = localStorage.getItem('loginMessage');
         this.studentService.setStudentLogin(true);
-        this.router.navigate(['/student/profile']);
+        
+        setTimeout(() => {
+           /** spinner ends after 2 seconds */
+          this.spinner.hide();
+          this.router.navigate(['/student/profile']);
+        }, 2000);
     });
   }
 

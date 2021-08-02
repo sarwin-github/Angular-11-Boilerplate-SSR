@@ -6,13 +6,8 @@
 				<!-- Error Message -->
 				<form class="px-3" (submit)="loginTeacher($event)" [formGroup]="teacherLoginForm">
 					<div class="alert alert-danger alert-dismissible fade show error-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="error" role="alert">
-					  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="onAlertClose()"></button>
+					  	<button type="button" class="btn-close hvr-buzz-out" data-bs-dismiss="alert" aria-label="Close" (click)="onAlertClose()"></button>
 					  	<span [innerHtml]="error"></span>
-					</div>  
-
-					<div class="alert alert-success alert-dismissible fade show success-message" [@animate]="{value:'*', params:{ y:'50px', delay:'600ms' }}" *ngIf="message" role="alert">
-					  	<a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="onAlertClose()">&times;</a>
-					  	<span [innerHtml]="message"></span>
 					</div>  
 
 					<div class="form-group">
@@ -29,10 +24,10 @@
 					</div>
 
 					<div class="text-center mt-3">
-						<a [routerLink]="'/teacher/signup'" class="mat-primary text-center full-width">Are you a new teacher? Sign Up Here</a><br>
+						<a [routerLink]="'/teacher/signup'" class="mat-primary text-center full-width hvr-sink">Are you a new teacher? Sign Up Here</a><br>
 					</div>
 
-					<button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
+					<button type="submit" class="btn btn-primary float-end mt-3 hvr-rotate">Submit</button>
 				</form> 
 			</div>
 		</div>

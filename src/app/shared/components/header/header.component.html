@@ -14,7 +14,7 @@
 
     <div class="navbar-collapse collapse text-white"  id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item mt-md-0 mt-3">
+        <li class="nav-item hvr-underline-from-center mt-md-0 mt-3">
           <a class="nav-link" routerLink="/">Home</a>
         </li>
 
@@ -22,12 +22,12 @@
           <span class="nav-link nav-item-divider mx-1"></span>
         </li>
 
-        <li class="nav-item" *ngIf="!loggedInStudent && !loggedInClient">
+        <li class="nav-item hvr-underline-from-center" *ngIf="!loggedInStudent && !loggedInClient">
           <a class="nav-link" routerLink="/student/signin">Student Sign in</a>
         </li>
 
-        <li class="nav-item dropdown" *ngIf="loggedInStudent">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" 
+        <li class="nav-item dropdown " *ngIf="loggedInStudent">
+          <a class="nav-link hvr-underline-from-center " href="#" id="navbarDropdown" role="button" 
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Profile <span class="fa fa-chevron-down"></span>
           </a>
@@ -38,16 +38,16 @@
         </li>
 
 
-        <li class="nav-item nav-item-divider d-none d-md-inline" *ngIf="!loggedInStudent">
+        <li class="nav-item hvr-underline-from-center nav-item-divider d-none d-md-inline" *ngIf="!loggedInStudent">
           <span class="nav-link nav-item-divider mx-1">|</span>
         </li>
 
-        <li class="nav-item nav-item-no-hover" 
+        <li class="nav-item hvr-underline-from-center nav-item-no-hover" 
         *ngIf="!loggedInStudent && !loggedInClient">
           <a class="nav-link" routerLink="/teacher/signin">Teacher Sign in</a>
         </li>
 
-        <li class="nav-item dropdown" *ngIf="loggedInClient">
+        <li class="nav-item hvr-underline-from-center dropdown" *ngIf="loggedInClient">
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Profile <span class="fa fa-chevron-down"></span>
           </a>

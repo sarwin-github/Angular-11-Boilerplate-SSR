@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from '../../../../shared/services/auth/teachers/teacher.service';
 import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'teacher-profile',
@@ -19,6 +20,7 @@ export class TeacherProfileComponent implements OnInit {
   constructor(private router:Router, 
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private spinner: NgxSpinnerService,
     private teacherService: TeacherService) { }
 
   ngOnInit() {
@@ -26,13 +28,18 @@ export class TeacherProfileComponent implements OnInit {
   }
 
   getClientProfile(){
+    // show spinner
+    this.spinner.show();
+
     this.req = this.teacherService.getTeacherProfile()
     .subscribe((result) => {
+      this.spinner.hide();
       this.teacher_data = result;
       console.log(result)
     },
     // If error in server/api temporary navigate to error page
     (err) => {
+      this.spinner.hide();
       localStorage.setItem('sessionError', err);
       localStorage.setItem('sessionUrl', this.router.url);
       console.log(err)

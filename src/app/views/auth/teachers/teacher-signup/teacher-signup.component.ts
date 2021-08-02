@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from '../../../../shared/services/auth/teachers/teacher.service'
 import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'teacher-signup',
@@ -25,6 +26,7 @@ export class TeacherSignupComponent implements OnInit {
   constructor(private router:Router, 
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private spinner: NgxSpinnerService,
     private teacherService: TeacherService) { 
     this.teacher = <ITeacherInput>{};
   }
@@ -74,17 +76,19 @@ export class TeacherSignupComponent implements OnInit {
       'phone'    : this.teacher.phone
     };
 
+    // Show Spinner
+    this.spinner.show();
+
     // execute http post request
     this.postReq = this.teacherService.postSignUp(body)
     .subscribe((result) => {
-      console.log(result)
-
       // if error then throw error result 
       if(result.error){
         window.scroll(0, 0);
         localStorage.setItem('signupError', result.error);
 
         this.error = localStorage.getItem('signupError');
+        this.spinner.hide();
         return this.router.navigate(['teacher/signup']);
       } 
       // if no error, execute login validation
@@ -97,9 +101,9 @@ export class TeacherSignupComponent implements OnInit {
     },
     // If error in server/api temporary navigate to error page
     (err) => {
+      this.spinner.hide();
       localStorage.setItem('sessionError', err);
       localStorage.setItem('sessionUrl', this.router.url);
-      console.log(err)
     });    
   }
 
@@ -119,7 +123,12 @@ export class TeacherSignupComponent implements OnInit {
       this.teacherSignupForm.reset();
       this.message = localStorage.getItem('loginMessage');
       this.teacherService.setTeacherLogin(true);
-      this.router.navigate(['/teacher/profile']);
+
+      setTimeout(() => {
+         /** spinner ends after 2 seconds */
+        this.spinner.hide();
+        this.router.navigate(['/teacher/profile']);
+      }, 2000);
     });
   }
 

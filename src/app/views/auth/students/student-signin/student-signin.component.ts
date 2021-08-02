@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../../../../shared/services/auth/students/student.service'
 import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'student-signin',
@@ -22,10 +23,10 @@ export class StudentSigninComponent implements OnInit {
   message  : string = localStorage.getItem('loginMessage');
   error  : string = localStorage.getItem('loginError');
 
-
   constructor(private router:Router, 
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private spinner: NgxSpinnerService,
     private studentService: StudentService) { }
 
   ngOnInit() {
@@ -38,6 +39,7 @@ export class StudentSigninComponent implements OnInit {
       'password'   : [null, Validators.compose([Validators.required, Validators.minLength(6)])]
     });
 
+    // check if backend is working
     this.req = this.studentService.getStudentLoginForm().subscribe((data) => {
       console.log(data);
     });
@@ -54,6 +56,9 @@ export class StudentSigninComponent implements OnInit {
       'password' : this.student_password,
     };
 
+    // Show Spinner
+    this.spinner.show();
+
     // execute http post request
     this.postReq = this.studentService
     .postLogin(body)
@@ -66,15 +71,14 @@ export class StudentSigninComponent implements OnInit {
         localStorage.setItem('loginError', result.error);
 
         this.error = localStorage.getItem('loginError');
+        this.spinner.hide();
         return this.router.navigate(['/student/signin']);
       } 
 
       // if no error, execute login validation
       else {
         let data = result;
-
-        console.log(data)
-
+        
         localStorage.removeItem('loginError');
         localStorage.setItem('loginMessage', 'Login was successful.');
         localStorage.setItem('token', 'Bearer ' + data.token);
@@ -90,14 +94,21 @@ export class StudentSigninComponent implements OnInit {
         this.studentLoginForm.reset();
         this.message = localStorage.getItem('loginMessage');
         this.studentService.setStudentLogin(true);
-        this.router.navigate(['/student/profile']);
+
+        setTimeout(() => {
+           /** spinner ends after 2 seconds */
+          this.spinner.hide();
+          this.router.navigate(['/student/profile']);
+        }, 2000);
+
+        
       }
     },
     // If error in server/api temporary navigate to error page
     (err) => {
+      this.spinner.hide();
       localStorage.setItem('sessionError', err);
       localStorage.setItem('sessionUrl', this.router.url);
-      console.log(err)
     });    
   }
 

@@ -8,6 +8,7 @@ import { rootRouterConfig } from './app.routing';
 import { AuthInterceptor } from './shared/services/set-auth-header';
 import { SharedModule } from './shared/shared.module';
 import { StudentGuard } from './shared/guard/auth/student.guard';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { StudentGuard } from './shared/guard/auth/student.guard';
   ],
   imports: [
     SharedModule,
+    NgxSpinnerModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false, relativeLinkResolution: 'legacy' })

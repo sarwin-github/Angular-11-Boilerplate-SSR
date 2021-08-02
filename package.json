@@ -31,7 +31,9 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.2",
     "express": "^4.15.2",
+    "hover.css": "^2.3.2",
     "jquery": "^3.6.0",
+    "ngx-spinner": "^11.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

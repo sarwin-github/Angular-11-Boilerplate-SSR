@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from '../../../../shared/services/auth/teachers/teacher.service'
 import { mainAnimations } from '../../../../shared/animations/main-animations';
 import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'teacher-signin',
@@ -26,6 +27,7 @@ export class TeacherSigninComponent implements OnInit {
   constructor(private router:Router, 
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private spinner: NgxSpinnerService,
     private teacherService: TeacherService) { }
 
   ngOnInit() {
@@ -54,6 +56,9 @@ export class TeacherSigninComponent implements OnInit {
       'password' : this.teacher_password,
     };
 
+    // Show Spinner
+    this.spinner.show();
+
     // execute http post request
     this.postReq = this.teacherService
     .postLogin(body)
@@ -66,7 +71,7 @@ export class TeacherSigninComponent implements OnInit {
         localStorage.setItem('loginError', result.error);
 
         this.error = localStorage.getItem('loginError');
-        //this.error = this.error.split(',').join('<br>');
+        this.spinner.hide();
         return this.router.navigate(['/teacher/signin']);
       } 
 
@@ -89,14 +94,19 @@ export class TeacherSigninComponent implements OnInit {
         this.teacherLoginForm.reset();
         this.message = localStorage.getItem('loginMessage');
         this.teacherService.setTeacherLogin(true);
-        this.router.navigate(['/teacher/profile']);
+
+        setTimeout(() => {
+           /** spinner ends after 2 seconds */
+          this.spinner.hide();
+          this.router.navigate(['/teacher/profile']);
+        }, 2000);
       }
     },
     // If error in server/api temporary navigate to error page
     (err) => {
+      this.spinner.hide();
       localStorage.setItem('sessionError', err);
       localStorage.setItem('sessionUrl', this.router.url);
-      console.log(err)
     });    
   }
 
